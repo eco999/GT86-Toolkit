@@ -87,6 +87,7 @@ class OBDManager: ObservableObject {
             do {
                 let info = try await obdService.startConnection(preferedProtocol: .protocol6)
                 let pidDescriptions = (info.supportedPIDs ?? []).map { "\($0)" }.joined(separator: ", ")
+                output = ""
                 await MainActor.run {
                     output += """
                     
